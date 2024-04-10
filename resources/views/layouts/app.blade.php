@@ -6,7 +6,27 @@
         <title>LaraGram App - @yield('title_name')</title>
         @vite('resources/css/app.css')
     </head>
-    <body>
+    <body class="bg-fuchsia-50">
+        <header class="p-5 border-b bg-white shadow">
+            <div class="container mx-auto flex justify-between items-center">
+                <h1 class="text-3xl font-black">LaraGram</h1>
+                <nav class="flex gap-2 items-center">
+                    <a class="font-bold uppercase text-fuchsia-600 text-sm" href="#">Login</a>
+                    <a class="font-bold uppercase text-fuchsia-600 text-sm" href="#">Register</a>
+                </nav>
+            </div>
+        </header>
 
+        <main class="container mx-auto mt-10">
+            <h2 class="font-black text-center text-3xl mb-10">@yield('title_name')</h2>
+            @yield('content')
+        </main>
+
+        <footer>
+            <div class="text-center p-5 text-fuchsia-400 font-bold uppercase text-sm">
+                <p>LaraGram &copy; {{ now()->year }} - All rights reserved. Developed by <a href="https://github.com/mmmarrtha">Martha Nieto</a></p>
+            </div>
+
+        </footer>
     </body>
 </html>

@@ -9,10 +9,10 @@
     <body class="bg-fuchsia-50">
         <header class="p-5 border-b bg-white shadow">
             <div class="container mx-auto flex justify-between items-center">
-                <h1 class="text-3xl font-black">LaraGram</h1>
+                <a href="/" class="text-3xl font-black">LaraGram</a>
                 <nav class="flex gap-2 items-center">
-                    <a class="font-bold uppercase text-fuchsia-600 text-sm" href="#">Login</a>
-                    <a class="font-bold uppercase text-fuchsia-600 text-sm" href="#">Register</a>
+                    <a class="font-bold uppercase text-fuchsia-600 text-sm" href="">Login</a>
+                    <a class="font-bold uppercase text-fuchsia-600 text-sm" href="/create-account">Register</a>
                 </nav>
             </div>
         </header>

@@ -11,8 +11,8 @@
             <div class="container mx-auto flex justify-between items-center">
                 <a href="/" class="text-3xl font-black">LaraGram</a>
                 <nav class="flex gap-2 items-center">
-                    <a class="font-bold uppercase text-fuchsia-600 text-sm" href="">Login</a>
-                    <a class="font-bold uppercase text-fuchsia-600 text-sm" href="/create-account">Register</a>
+                    <a class="font-bold uppercase text-sky-800 text-sm" href="">Login</a>
+                    <a class="font-bold uppercase text-sky-800 text-sm" href="{{ route('register')}}">Register</a>
                 </nav>
             </div>
         </header>
@@ -23,7 +23,7 @@
         </main>
 
         <footer class="mt-10">
-            <div class="text-center p-5 text-fuchsia-600 font-bold uppercase text-sm">
+            <div class="text-center p-5 text-sky-800 font-bold uppercase text-sm">
                 <p>LaraGram &copy; {{ now()->year }} - All rights reserved. Developed by <a href="https://github.com/mmmarrtha">Martha Nieto</a></p>
             </div>
         </footer>

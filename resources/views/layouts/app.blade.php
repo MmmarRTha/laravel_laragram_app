@@ -7,23 +7,40 @@
         @vite('resources/css/app.css')
     </head>
     <body class="bg-slate-100">
-        <header class="p-5 border-b bg-white shadow">
-            <div class="container mx-auto flex justify-between items-center">
+        <header class="p-5 bg-white border-b shadow">
+            <div class="container flex items-center justify-between mx-auto">
                 <a href="/" class="text-3xl font-black">LaraGram</a>
-                <nav class="flex gap-2 items-center">
-                    <a class="font-bold uppercase text-sky-800 text-sm" href="">Login</a>
-                    <a class="font-bold uppercase text-sky-800 text-sm" href="{{ route('register')}}">Register</a>
-                </nav>
+                @auth
+                    <nav class="flex items-center gap-2">
+                        <a class="text-sm font-bold text-sky-800" href="">
+                            Hello:
+                            <span class="font-normal">
+                                {{ auth()->user()->username }}
+                            </span>
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="text-sm font-bold uppercase text-sky-800">Logout</button>
+                        </form>
+                    </nav>
+                @endauth
+
+                @guest
+                    <nav class="flex items-center gap-2">
+                        <a class="text-sm font-bold uppercase text-sky-800" href="{{ route('login') }}">Login</a>
+                        <a class="text-sm font-bold uppercase text-sky-800" href="{{ route('register') }}">Register</a>
+                    </nav>
+                @endguest
             </div>
         </header>
 
         <main class="container mx-auto mt-10">
-            <h2 class="font-black text-center text-3xl mb-10">@yield('title_name')</h2>
+            <h2 class="mb-10 text-3xl font-black text-center">@yield('title_name')</h2>
             @yield('content')
         </main>
 
         <footer class="mt-10">
-            <div class="text-center p-5 text-sky-800 font-bold uppercase text-sm">
+            <div class="p-5 text-sm font-bold text-center uppercase text-sky-800">
                 <p>LaraGram &copy; {{ now()->year }} - All rights reserved. Developed by <a href="https://github.com/mmmarrtha">Martha Nieto</a></p>
             </div>
         </footer>

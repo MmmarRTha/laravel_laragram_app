@@ -51,6 +51,14 @@
                     </div>
                     @enderror
                 </div>
+                <div class="mb-5">
+                    <input
+                        id="remember"
+                        name="remember"
+                        type="checkbox"
+                        class="mr-2"
+                    >
+                    <label for="remember" class="text-sm text-sky-800">Remember me</label>
 
                 <input type="submit" name="" id="" value="Login" class="w-full p-3 font-bold text-white uppercase rounded-lg bg-sky-600 hover:bg-sky-700">
             </form>

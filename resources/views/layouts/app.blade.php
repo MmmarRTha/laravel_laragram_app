@@ -3,6 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('styles')
         <title>LaraGram App - @yield('title_name')</title>
         @vite('resources/css/app.css')
     </head>
@@ -41,7 +43,7 @@
         </header>
 
         <main class="container mx-auto mt-10">
-            <h2 class="mb-10 text-3xl font-black text-center">@yield('title_name')</h2>
+            <h2 class="mb-10 text-3xl font-black text-center text-sky-700">@yield('title_name')</h2>
             @yield('content')
         </main>
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title_name')
-    <p class="text-sky-700">Login to LaraGram</p>
+    Login to LaraGram
 @endsection
 
 @section('content')

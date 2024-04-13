@@ -1,13 +1,19 @@
 @extends('layouts.app')
 
 @section('title_name')
-    <p class="text-sky-700">Create new Post</p>
+    Create a new Post
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@endpush
 
 @section('content')
     <div class="md:flex md:items-center">
         <div class="px-10 md:w-1/2">
-            Image here
+            <form action="{{ route('images.store') }}" method="POST" enctype="multipart/form-data" id="dropzone" class="flex flex-col items-center justify-center w-full border-2 border-dashed rounded dropzone h-96">
+                @csrf
+            </form>
         </div>
 
         <div class="p-10 mt-10 bg-white rounded-lg shadow-xl md:w-1/2 md:mt-0">

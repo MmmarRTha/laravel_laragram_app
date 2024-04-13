@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.blue_gradient {
+    @apply text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text;
+}
+
+.purple_gradient {
+    @apply text-transparent bg-gradient-to-r from-violet-500 via-purple-500 to-fuchsia-500 bg-clip-text;
+  }
+

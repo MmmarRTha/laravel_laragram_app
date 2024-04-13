@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title_name')
-    Profile: {{ $user->username }}
+    <p class="text-sky-700">Profile: {{ $user->username }}</p>
 @endsection
 
 @section('content')

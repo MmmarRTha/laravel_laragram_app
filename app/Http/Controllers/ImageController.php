@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function store()
+    public function store(Request $request)
     {
-        return "store image controller";
+        $image = $request->file('file');
+        return response()->json(['image' => $image->extension()]);
     }
 }

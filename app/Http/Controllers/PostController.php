@@ -10,8 +10,11 @@ class PostController extends Controller
 {
     public function index(User $user)
     {
+        $posts = Post::where('user_id', $user->id)->get();
+
         return view('dashboard', [
-            'user' => $user
+            'user' => $user,
+            'posts' => $posts,
         ]);
     }
 
@@ -28,7 +31,7 @@ class PostController extends Controller
             'image' => 'required',
         ]);
 
-        Post::create([
+        $request->user()->posts()->create([
             'title' => $request->title,
             'description' => $request->description,
             'image' => $request->image,

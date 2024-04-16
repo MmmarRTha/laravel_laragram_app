@@ -33,7 +33,7 @@
         <div class="grid gap-6 px-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             @foreach ($posts as $post)
             <div>
-                <a>
+                <a href="{{ route('posts.show', ['post' => $post, 'user' => $user]) }}">
                     <img src="{{ Vite::asset('public/uploads') . '/' . $post->image }}" alt="Image Post" {{ $post->title }}>
                 </a>
             </div>

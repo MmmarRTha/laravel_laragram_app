@@ -39,6 +39,9 @@
             </div>
             @endforeach
         </div>
+        <div class="my-10">
+            {{ $posts->links() }}
+        </div>
 
     </section>
 @endsection

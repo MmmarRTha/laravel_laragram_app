@@ -18,8 +18,8 @@
         </div>
 
         @auth
-            @if ($post->user->id == auth()->user()->id)
-                <form method="POST" action="{{ route('posts.destroy', $post) }}">
+            @if($post->user_id === auth()->user()->id)
+                <form method="POST" action="{{ route('posts.destroy', $post)}}">
                     @method('DELETE')
                     @csrf
                     <input type="submit" name="delete" value="Delete Post" class="p-2 mt-4 font-bold text-white bg-red-500 rounded cursor-pointer hover:bg-red-600 ">

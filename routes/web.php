@@ -31,3 +31,4 @@ Route::post('/{user:username}/posts/{post}', [CommentController::class, 'store']
 Route::post('/resources/images', [ImageController::class, 'store'])->name('images.store');
 
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
+Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');

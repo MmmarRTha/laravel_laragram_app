@@ -7,6 +7,7 @@
         @stack('styles')
         <title>LaraGram App - @yield('title_name')</title>
         @vite('resources/css/app.css')
+        @livewireStyles
     </head>
     <body class="bg-slate-100">
         <header class="p-5 bg-white border-b shadow">
@@ -53,5 +54,6 @@
                 <p>Developed by <a class="purple_gradient" href="https://github.com/mmmarrtha">Martha Nieto</a></p>
             </div>
         </footer>
+        @livewireScripts
     </body>
 </html>

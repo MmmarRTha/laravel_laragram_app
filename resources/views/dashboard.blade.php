@@ -59,21 +59,6 @@
 
     <section class="container mx-auto mt-10">
         <h2 class="my-10 text-4xl font-black text-center purple_gradient">Posts</h2>
-        @if ($posts->isEmpty())
-            <p class="text-sm font-bold text-center text-gray-800 uppercase">No posts yet</p>
-        @endif
-        <div class="grid gap-6 px-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            @foreach ($posts as $post)
-            <div>
-                <a href="{{ route('posts.show', ['post' => $post, 'user' => $user]) }}">
-                    <img src="{{ Vite::asset('public/uploads') . '/' . $post->image }}" alt="Image Post" {{ $post->title }}>
-                </a>
-            </div>
-            @endforeach
-        </div>
-        <div class="my-10">
-            {{ $posts->links() }}
-        </div>
-
+        <x-lists-post :posts="$posts" />
     </section>
 @endsection

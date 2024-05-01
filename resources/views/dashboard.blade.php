@@ -31,7 +31,8 @@
                 <p class="mb-3 text-sm font-bold text-gray-800">0
                     <span class="font-normal">Following</span>
                 </p>
-                <p class="mb-3 text-sm font-bold text-gray-800">0
+                <p class="mb-3 text-sm font-bold text-gray-800">
+                    {{ $user->posts->count() }}
                     <span class="font-normal">Posts</span>
                 </p>
             </div>

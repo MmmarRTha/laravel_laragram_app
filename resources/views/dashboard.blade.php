@@ -25,16 +25,34 @@
                         @endif
                     @endauth
                 </div>
-                <p class="mt-5 mb-3 text-sm font-bold text-gray-800">0
-                    <span class="font-normal">Followers</span>
+                <p class="mt-5 mb-3 text-sm font-bold text-gray-800">
+                    {{ $user->followers->count() }}
+                    <span class="font-normal"> @choice( 'Follower|Followers', $user->followers->count() )</span>
                 </p>
-                <p class="mb-3 text-sm font-bold text-gray-800">0
+                <p class="mb-3 text-sm font-bold text-gray-800">
+                    {{ $user->followingTo->count() }}
                     <span class="font-normal">Following</span>
                 </p>
                 <p class="mb-3 text-sm font-bold text-gray-800">
                     {{ $user->posts->count() }}
                     <span class="font-normal">Posts</span>
                 </p>
+                @auth
+                    @if ( $user->id !== auth()->user()->id )
+                        @if ( !$user->following(auth()->user()) )
+                            <form action="{{ route('users.follow', $user) }}" method="POST">
+                                @csrf
+                                <input type="submit" value="Follow" class="px-5 py-1 text-xs font-bold text-center text-white uppercase bg-blue-500 rounded-lg cursor-pointer hover:bg-blue-600">
+                            </form>
+                        @else
+                            <form action="{{ route('users.unfollow', $user)}}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <input type="submit" value="Unfollow" class="px-3 py-1 text-xs font-bold text-center text-white uppercase bg-red-500 rounded-lg cursor-pointer hover:bg-red-600">
+                            </form>
+                        @endif
+                    @endif
+                @endauth
             </div>
         </div>
     </div>

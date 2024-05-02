@@ -16,7 +16,7 @@ class ImageController extends Controller
         $serverImage = Image::make($image);
         $serverImage->fit(1000, 1000);
 
-        $imagePath = public_path('uploads/' . '/' . $imageName);
+        $imagePath = public_path('uploads' . '/' . $imageName);
         $serverImage->save($imagePath);
 
         return response()->json(['image' => $imageName]);

@@ -31,7 +31,7 @@ class ProfileController extends Controller
             $serverImage = Image::make($image);
             $serverImage->fit(1000, 1000);
 
-            $imagePath = public_path('profiles/' . '/' . $imageName);
+            $imagePath = public_path('profiles' . '/' . $imageName);
             $serverImage->save($imagePath);
         }
 

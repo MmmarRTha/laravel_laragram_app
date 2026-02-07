@@ -56,9 +56,8 @@ class PostController extends Controller
         Gate::authorize('delete', $post);
         $post->delete();
 
-        $image_path = public_path('uploads' . '/' . $post->image);
-        if(File::exists($image_path))
-        {
+        $image_path = public_path('uploads'.'/'.$post->image);
+        if (File::exists($image_path)) {
             unlink($image_path);
         }
 

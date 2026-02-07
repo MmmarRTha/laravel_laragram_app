@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+use Intervention\Image\Laravel\Facades\Image;
 
 class ProfileController extends Controller
 {
@@ -23,15 +24,19 @@ class ProfileController extends Controller
             'email' => ['required', 'email', 'unique:users,email,'.auth()->user()->id, 'max:60'],
         ]);
 
-        if($request->image)
-        {
+        if ($request->image) {
             $image = $request->file('image');
-            $imageName = Str::uuid() . '.' . $image->extension();
+            $imageName = Str::uuid().'.'.$image->extension();
 
-            $serverImage = Image::make($image);
-            $serverImage->fit(1000, 1000);
+            $serverImage = Image::read($image);
+            $serverImage->resize(1000, 1000);
 
-            $imagePath = public_path('profiles' . '/' . $imageName);
+            $profilesDir = public_path('profiles');
+            if (! File::exists($profilesDir)) {
+                File::makeDirectory($profilesDir, 0755, true);
+            }
+
+            $imagePath = $profilesDir.'/'.$imageName;
             $serverImage->save($imagePath);
         }
 

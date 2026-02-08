@@ -22,8 +22,8 @@ A Laravel-based web application inspired by Instagram, built to explore social n
 
 - PHP 7.4 or higher
 - Composer
-- MySQL
-- Node.js and npm
+- PostgreSQL
+- Node.js and pnpm
 
 ### Installation🛠️
 
@@ -35,7 +35,7 @@ A Laravel-based web application inspired by Instagram, built to explore social n
 2. Install dependencies
    ```bash
    composer install  
-   npm install  
+   pnpm install  
    ```
   
 3. Setup Environment
@@ -54,7 +54,7 @@ A Laravel-based web application inspired by Instagram, built to explore social n
    ```
 6. Build Frontend Assets
    ```bash
-   npm run dev  
+   pnpm run dev  
    ```
 ## Usage 🚀
 Start the development server and visit the app:

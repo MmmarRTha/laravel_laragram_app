@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+#[Fillable('user_id')]
 class Like extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'user_id',
-    ];
 }

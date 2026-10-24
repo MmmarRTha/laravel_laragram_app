@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
-    public function index(User $user)
+    public function index(User $user): View
     {
         $posts = Post::where('user_id', $user->id)->latest()->paginate(12);
 
@@ -20,12 +22,12 @@ class PostController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(): View
     {
         return view('posts.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'title' => 'required|max:255',
@@ -43,7 +45,7 @@ class PostController extends Controller
         return redirect()->route('posts.index', auth()->user()->username);
     }
 
-    public function show(User $user, Post $post)
+    public function show(User $user, Post $post): View
     {
         return view('posts.show', [
             'post' => $post,
@@ -51,7 +53,7 @@ class PostController extends Controller
         ]);
     }
 
-    public function destroy(Request $request, Post $post)
+    public function destroy(Request $request, Post $post): RedirectResponse
     {
         Gate::authorize('delete', $post);
         $post->delete();

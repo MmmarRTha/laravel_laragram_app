@@ -2,38 +2,41 @@
 
 namespace App\Livewire;
 
+use App\Models\Post;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class LikePost extends Component
 {
-    public $post;
+    public Post $post;
 
-    public $isLiked;
+    public bool $isLiked = false;
 
-    public $likesCount;
+    public int $likesCount = 0;
 
-    public function mount($post)
+    public function mount(Post $post): void
     {
+        $this->post = $post;
         $this->isLiked = $post->checkLike(auth()->user());
-        $this->likesCount = $post->likes->count();
+        $this->likesCount = $post->likes()->count();
     }
 
-    public function like()
+    public function like(): void
     {
-        if ($this->post->checkLike(auth()->user())) {
-            $this->post->likes()->where('post_id', $this->post->id)->delete();
+        if ($this->isLiked) {
+            $this->post->likes()->where('user_id', auth()->id())->delete();
             $this->isLiked = false;
             $this->likesCount--;
         } else {
             $this->post->likes()->create([
-                'user_id' => auth()->user()->id,
+                'user_id' => auth()->id(),
             ]);
             $this->isLiked = true;
             $this->likesCount++;
         }
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.like-post');
     }

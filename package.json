@@ -6,16 +6,16 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "@tailwindcss/vite": "^4.2.2",
-        "autoprefixer": "^10.4.27",
-        "axios": "^1.13.6",
-        "laravel-vite-plugin": "^2.1.0",
-        "postcss": "^8.5.8",
-        "tailwindcss": "^4.2.2",
-        "vite": "8.0.0"
+        "@tailwindcss/vite": "^4.3.3",
+        "autoprefixer": "^10.6.1",
+        "axios": "^1.20.0",
+        "laravel-vite-plugin": "^3.2.0",
+        "postcss": "^8.5.31",
+        "tailwindcss": "^4.3.3",
+        "vite": "8.3.5"
     },
     "dependencies": {
-        "dropzone": "6.0.0-beta.2",
-        "pnpm": "^10.32.1"
+        "dropzone": "6.3.5",
+        "pnpm": "^11.28.8"
     }
 }

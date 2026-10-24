@@ -28,7 +28,7 @@ class ProfileController extends Controller
             $image = $request->file('image');
             $imageName = Str::uuid().'.'.$image->extension();
 
-            $serverImage = Image::read($image);
+            $serverImage = Image::decode($image);
             $serverImage->resize(1000, 1000);
 
             $profilesDir = public_path('profiles');

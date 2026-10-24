@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/home/marthanieto/.local/share/mise/installs/php/8.5.12/bin/php",
+            "args": [
+                "/home/marthanieto/Documents/dev/laravel/laravel_laragram_app/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}

@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('auth.register');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->request->add(['username' => Str::slug($request->username)]);
 

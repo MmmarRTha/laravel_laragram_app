@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Interfaces\ImageManagerInterface;
@@ -12,7 +13,7 @@ class ImageController extends Controller
         protected ImageManagerInterface $imageManager,
     ) {}
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $image = $request->file('file');
         $imageName = Str::uuid().'.'.$image->extension();

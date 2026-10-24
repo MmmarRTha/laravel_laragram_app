@@ -4,9 +4,12 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -14,6 +17,7 @@ use Illuminate\Notifications\Notifiable;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -29,28 +33,32 @@ class User extends Authenticatable
         ];
     }
 
-    public function posts()
+    /** @return HasMany<Post, $this> */
+    public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
     }
 
-    public function likes()
+    /** @return HasMany<Like, $this> */
+    public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
     }
 
-    public function followers()
+    /** @return BelongsToMany<User, $this> */
+    public function followers(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'followers', 'user_id', 'follower_id')->withTimestamps();
     }
 
-    public function followingTo()
+    /** @return BelongsToMany<User, $this> */
+    public function followingTo(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'followers', 'follower_id', 'user_id')->withTimestamps();
     }
 
-    public function following(User $user)
+    public function following(User $user): bool
     {
-        return $this->followers->contains($user);
+        return $this->followers()->firstWhere('id', $user->id) !== null;
     }
 }

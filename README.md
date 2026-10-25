@@ -20,7 +20,7 @@ A Laravel-based web application inspired by Instagram, built to explore social n
 
 ### Prerequisites⚙️
 
-- PHP 8.3 or higher
+- PHP 8.5 or higher
 - Composer
 - PostgreSQL
 - Node.js and pnpm
